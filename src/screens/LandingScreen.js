@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import { Image, StyleSheet, View } from "react-native";
 
 import { width, height, totalSize } from "react-native-dimension";
@@ -7,6 +8,8 @@ import AppText from "../components/AppText";
 import Button from "../components/Button";
 
 export default function LandingScreen() {
+  const navigation = useNavigation();
+
   return (
     <>
       <View style={styles.container}>
@@ -29,6 +32,7 @@ export default function LandingScreen() {
           backgroundColor={colors.white}
           textColor={colors.black}
           activeOpacity={0.8}
+          onPress={() => navigation.navigate("Login")}
         >
           Login
         </Button>
@@ -37,6 +41,7 @@ export default function LandingScreen() {
           backgroundColor={`#404040`}
           textColor={colors.white}
           activeOpacity={0.8}
+          onPress={() => navigation.navigate("Register")}
         >
           Register
         </Button>

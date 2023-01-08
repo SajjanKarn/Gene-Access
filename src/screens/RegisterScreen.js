@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Image,
   ScrollView,
@@ -6,17 +7,18 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { width, height, totalSize } from "react-native-dimension";
+import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
+import { width, height, totalSize } from "react-native-dimension";
+import * as ImagePicker from "expo-image-picker";
 
 import colors from "../../config/colors";
 import AppText from "../components/AppText";
 import Button from "../components/Button";
-
-import * as ImagePicker from "expo-image-picker";
-import { useState } from "react";
+import AppInput from "../components/AppInput";
 
 export default function RegisterScreen() {
+  const navigation = useNavigation();
   const [image, setImage] = useState(null);
 
   const pickImage = async () => {
@@ -26,8 +28,6 @@ export default function RegisterScreen() {
       aspect: [4, 3],
       quality: 1,
     });
-
-    console.log(result);
 
     if (!result.canceled) {
       setImage(result.assets[0].uri);
@@ -65,10 +65,10 @@ export default function RegisterScreen() {
           )}
         </View>
 
-        <TextInput placeholder="John Doe" style={styles.input} />
-        <TextInput placeholder="Email" style={styles.input} />
-        <TextInput placeholder="Password" style={styles.input} />
-        <TextInput placeholder="Confirm Password" style={styles.input} />
+        <AppInput placeholder="John Doe" />
+        <AppInput placeholder="Email" />
+        <AppInput placeholder="Password" />
+        <AppInput placeholder="Confirm Password" />
 
         <Button
           font="Poppins-SemiBold"
@@ -79,7 +79,11 @@ export default function RegisterScreen() {
           Register
         </Button>
 
-        <AppText variant="Light" style={styles.signIn}>
+        <AppText
+          variant="Light"
+          style={styles.signIn}
+          onPress={() => navigation.navigate("Login")}
+        >
           Already Have an Account? Login
         </AppText>
       </View>
@@ -91,6 +95,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: width(5),
+    backgroundColor: colors.white,
   },
   headerText: {
     fontSize: totalSize(3),
@@ -121,13 +126,6 @@ const styles = StyleSheet.create({
     borderRadius: totalSize(10),
     marginBottom: height(1),
     alignSelf: "center",
-  },
-  input: {
-    backgroundColor: colors.lightGray,
-    paddingHorizontal: width(5),
-    paddingVertical: height(1.8),
-    borderRadius: totalSize(10),
-    marginBottom: height(2),
   },
   forgotPassword: {
     color: colors.black,

@@ -1,11 +1,16 @@
+import { useNavigation } from "@react-navigation/native";
 import { StyleSheet, TextInput, View } from "react-native";
 
 import { width, height, totalSize } from "react-native-dimension";
 import colors from "../../config/colors";
+
 import AppText from "../components/AppText";
+import AppInput from "../components/AppInput";
 import Button from "../components/Button";
 
 export default function LoginScreen() {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <AppText variant="SemiBold" style={styles.headerText}>
@@ -14,8 +19,8 @@ export default function LoginScreen() {
 
       {/* Form  */}
       <View style={styles.formContainer}>
-        <TextInput placeholder="Email" style={styles.input} />
-        <TextInput placeholder="Password" style={styles.input} />
+        <AppInput placeholder="Email" />
+        <AppInput placeholder="Password" />
 
         <AppText style={styles.forgotPassword}>Forgot Password?</AppText>
 
@@ -28,7 +33,11 @@ export default function LoginScreen() {
           Login
         </Button>
 
-        <AppText variant="Light" style={styles.signUp}>
+        <AppText
+          variant="Light"
+          style={styles.signUp}
+          onPress={() => navigation.navigate("Register")}
+        >
           Don't have an account? Register
         </AppText>
       </View>
@@ -40,6 +49,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: width(5),
+    backgroundColor: colors.white,
   },
   headerText: {
     fontSize: totalSize(3),
@@ -47,13 +57,6 @@ const styles = StyleSheet.create({
   },
   formContainer: {
     marginTop: height(5),
-  },
-  input: {
-    backgroundColor: colors.lightGray,
-    paddingHorizontal: width(5),
-    paddingVertical: height(1.8),
-    borderRadius: totalSize(10),
-    marginBottom: height(2),
   },
   forgotPassword: {
     color: colors.black,

@@ -7,7 +7,6 @@ export default function AppText({ variant = "Regular", children, ...props }) {
         fontFamily: `Poppins-${variant}`,
         ...props.style,
       }}
-      {...props}
     >
       {children}
     </Text>

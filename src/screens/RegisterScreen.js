@@ -3,7 +3,6 @@ import {
   Image,
   ScrollView,
   StyleSheet,
-  TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
@@ -13,6 +12,7 @@ import { width, height, totalSize } from "react-native-dimension";
 import * as ImagePicker from "expo-image-picker";
 
 import colors from "../../config/colors";
+
 import AppText from "../components/AppText";
 import Button from "../components/Button";
 import AppInput from "../components/AppInput";

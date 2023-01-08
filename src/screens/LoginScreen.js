@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
-import { StyleSheet, TextInput, View } from "react-native";
-
+import { ScrollView, StyleSheet, View } from "react-native";
 import { width, height, totalSize } from "react-native-dimension";
+
 import colors from "../../config/colors";
 
 import AppText from "../components/AppText";
@@ -12,7 +12,7 @@ export default function LoginScreen() {
   const navigation = useNavigation();
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <AppText variant="SemiBold" style={styles.headerText}>
         Login
       </AppText>
@@ -22,7 +22,12 @@ export default function LoginScreen() {
         <AppInput placeholder="Email" />
         <AppInput placeholder="Password" />
 
-        <AppText style={styles.forgotPassword}>Forgot Password?</AppText>
+        <AppText
+          style={styles.forgotPassword}
+          onPress={() => navigation.navigate("ForgotPassword")}
+        >
+          Forgot Password?
+        </AppText>
 
         <Button
           font="Poppins-SemiBold"
@@ -41,7 +46,7 @@ export default function LoginScreen() {
           Don't have an account? Register
         </AppText>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 

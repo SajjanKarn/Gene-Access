@@ -1,7 +1,7 @@
-import { StatusBar, StyleSheet, Text, View } from "react-native";
+import { StatusBar, StyleSheet, View } from "react-native";
 import { useFonts } from "expo-font";
 import AuthStack from "./src/navigation/AuthScreen";
-import ForgotPasswordScreen from "./src/screens/ForgotPasswordScreen";
+import AuthNavigator from "./src/navigation/AuthNavigation";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -21,8 +21,8 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <AuthStack />
-      {/* <ForgotPasswordScreen /> */}
+      {/* <AuthStack /> */}
+      <AuthNavigator />
     </View>
   );
 }

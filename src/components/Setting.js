@@ -1,9 +1,10 @@
 import { StyleSheet } from "react-native";
-import { AntDesign } from "@expo/vector-icons";
+import { TouchableOpacity } from "react-native";
 import { height, totalSize, width } from "react-native-dimension";
+import { AntDesign } from "@expo/vector-icons";
+
 import colors from "../../config/colors";
 import AppText from "../components/AppText";
-import { TouchableOpacity } from "react-native";
 
 export default function Setting({
   size = 24,
@@ -17,7 +18,7 @@ export default function Setting({
     <TouchableOpacity
       style={styles.setting}
       onPress={onPress}
-      activeOpacity={0.7}
+      activeOpacity={0.2}
     >
       <AntDesign
         name={iconName}

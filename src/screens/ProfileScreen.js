@@ -1,21 +1,23 @@
-import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
+import { Image, ScrollView, StyleSheet, View } from "react-native";
 import { width, height, totalSize } from "react-native-dimension";
+
 import colors from "../../config/colors";
+
 import AppText from "../components/AppText";
 import Setting from "../components/Setting";
 
 export default function ProfileScreen() {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.userProfileContainer}>
         <Image
           source={{
-            uri: "https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+            uri: "https://cdn.mos.cms.futurecdn.net/uNarNjeX5KZfbX3YVN6Nb9-1200-80.jpg",
           }}
           style={styles.userProfileImage}
         />
         <AppText variant="SemiBold" style={styles.userProfileName}>
-          Sajjan Karna
+          Billy Butcher
         </AppText>
       </View>
 
@@ -25,12 +27,13 @@ export default function ProfileScreen() {
 
       <View style={styles.settingsContainer}>
         <Setting iconName="user">Edit Profile</Setting>
+        <Setting iconName="calendar">Past Appointments</Setting>
+        <Setting iconName="lock">Change Password</Setting>
         <Setting iconName="creditcard">Payment</Setting>
         <Setting iconName="staro">Rate Us</Setting>
-        <Setting iconName="lock">Change Password</Setting>
         <Setting iconName="logout">Logout</Setting>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
@@ -55,9 +58,11 @@ const styles = StyleSheet.create({
   },
   settingHeaderTitle: {
     fontSize: totalSize(2.5),
+    marginTop: height(3),
   },
   settingsContainer: {
-    marginTop: height(3),
+    marginTop: height(1),
     marginHorizontal: width(3),
+    paddingBottom: height(3),
   },
 });

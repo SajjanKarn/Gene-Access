@@ -36,7 +36,13 @@ export default function ReportCard({
           style={styles.reportImage}
         />
       )}
-      <AppText variant={variant} style={styles.reportTitle}>
+      <AppText
+        variant={variant}
+        style={styles.reportTitle}
+        textColor={
+          getPercentageColor(percentage) === colors.red ? "white" : "black"
+        }
+      >
         {children}
       </AppText>
       {subText && (
@@ -45,7 +51,13 @@ export default function ReportCard({
         </AppText>
       )}
       {percentage && (
-        <AppText variant="Light" style={styles.reportSubTitle}>
+        <AppText
+          variant="Light"
+          style={styles.reportSubTitle}
+          textColor={
+            getPercentageColor(percentage) === colors.red ? "white" : "black"
+          }
+        >
           {percentage}%
         </AppText>
       )}

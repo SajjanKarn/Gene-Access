@@ -84,16 +84,19 @@ export default function SequenceScreen() {
           Possible Threats
         </AppText>
         <View style={styles.possibleThreatsContainer}>
-          {threats.map((threat) => (
-            <ReportCard
-              key={threat.name}
-              image={threat.image}
-              variant="SemiBold"
-              percentage={threat.percentage}
-            >
-              {threat.name}
-            </ReportCard>
-          ))}
+          {/* sort the threats by percentage */}
+          {threats
+            .sort((a, b) => b.percentage - a.percentage)
+            .map((threat) => (
+              <ReportCard
+                key={threat.name}
+                image={threat.image}
+                variant="SemiBold"
+                percentage={threat.percentage}
+              >
+                {threat.name}
+              </ReportCard>
+            ))}
         </View>
       </View>
     </ScrollView>

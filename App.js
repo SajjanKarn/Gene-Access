@@ -1,8 +1,10 @@
 import { StatusBar, StyleSheet, View } from "react-native";
 import { useFonts } from "expo-font";
+
 import AuthStack from "./src/navigation/AuthScreen";
 import AuthNavigator from "./src/navigation/AuthNavigation";
 import ReportScreen from "./src/screens/ReportScreen";
+
 import SequenceScreen from "./src/screens/SequenceScreen";
 
 export default function App() {

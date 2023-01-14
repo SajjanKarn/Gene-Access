@@ -76,7 +76,7 @@ export default function SequenceScreen() {
               key={threat.name}
               image={threat.image}
               variant="SemiBold"
-              subText={`${threat.percentage}%`}
+              percentage={threat.percentage}
             >
               {threat.name}
             </ReportCard>

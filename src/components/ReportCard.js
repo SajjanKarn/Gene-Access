@@ -2,6 +2,8 @@ import { Image, StyleSheet, TouchableOpacity } from "react-native";
 import { width, height, totalSize } from "react-native-dimension";
 
 import colors from "../../config/colors";
+import { getPercentageColor } from "../../utils/percentage";
+
 import AppText from "./AppText";
 
 export default function ReportCard({
@@ -9,23 +11,11 @@ export default function ReportCard({
   variant = "Light",
   children,
   onPress,
+  percentage,
   subText,
   backgroundColor,
 }) {
-  const percentage = parseInt(subText.split("%")[0]);
-  if (percentage > 50) {
-    backgroundColor = colors.red;
-  } else if (percentage > 30) {
-    backgroundColor = colors.lightRed2;
-  } else if (percentage > 20) {
-    backgroundColor = colors.lightRed2;
-  } else if (percentage > 10 && percentage < 20) {
-    backgroundColor = colors.lightRed;
-  } else if (percentage < 10) {
-    backgroundColor = colors.green;
-  } else {
-    backgroundColor = colors.lightGray;
-  }
+  if (percentage) backgroundColor = getPercentageColor(percentage);
 
   return (
     <TouchableOpacity
@@ -52,6 +42,11 @@ export default function ReportCard({
       {subText && (
         <AppText variant="Light" style={styles.reportSubTitle}>
           {subText}
+        </AppText>
+      )}
+      {percentage && (
+        <AppText variant="Light" style={styles.reportSubTitle}>
+          {percentage}%
         </AppText>
       )}
     </TouchableOpacity>

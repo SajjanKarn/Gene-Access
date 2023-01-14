@@ -6,6 +6,7 @@ import colors from "../../config/colors";
 import AppText from "../components/AppText";
 import Button from "../components/Button";
 import ReportCard from "../components/ReportCard";
+import ScaleItem from "../components/ScaleItem";
 
 export default function SequenceScreen() {
   const [threats, setThreats] = useState([
@@ -66,10 +67,22 @@ export default function SequenceScreen() {
           My DNA File
         </Button>
 
-        <AppText variant="Bold" style={styles.screenHeaderTitle}>
+        <View style={styles.scaleContainer}>
+          <AppText variant="Bold" style={styles.scaleTitle}>
+            Risk Level Scale
+          </AppText>
+
+          <View style={styles.scale}>
+            <ScaleItem color={colors.green}>Risk Level: Low</ScaleItem>
+            <ScaleItem color={colors.lightRed}>Risk Level: Medium</ScaleItem>
+            <ScaleItem color={colors.lightRed2}>Risk Level: High</ScaleItem>
+            <ScaleItem color={colors.red}>Risk Level: Very High</ScaleItem>
+          </View>
+        </View>
+
+        <AppText variant="Bold" style={styles.threatsTitle}>
           Possible Threats
         </AppText>
-
         <View style={styles.possibleThreatsContainer}>
           {threats.map((threat) => (
             <ReportCard
@@ -98,14 +111,23 @@ const styles = StyleSheet.create({
     fontSize: totalSize(2.5),
     marginTop: height(1),
   },
-  reportContainer: {
+  threatsTitle: {
+    fontSize: totalSize(2.5),
     marginTop: height(2),
+  },
+  reportContainer: {
     paddingBottom: height(5),
   },
   possibleThreatsContainer: {
-    marginTop: height(2),
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-between",
+  },
+  scaleContainer: {
+    marginTop: height(2),
+  },
+  scaleTitle: {
+    fontSize: totalSize(2),
+    marginBottom: height(1),
   },
 });

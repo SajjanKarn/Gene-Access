@@ -3,6 +3,7 @@ import { useFonts } from "expo-font";
 import AuthStack from "./src/navigation/AuthScreen";
 import AuthNavigator from "./src/navigation/AuthNavigation";
 import ReportScreen from "./src/screens/ReportScreen";
+import SequenceScreen from "./src/screens/SequenceScreen";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -23,7 +24,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       {/* <AuthStack /> */}
-      <ReportScreen />
+      <SequenceScreen />
       {/* <AuthNavigator /> */}
     </View>
   );

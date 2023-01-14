@@ -9,8 +9,24 @@ export default function ReportCard({
   variant = "Light",
   children,
   onPress,
+  subText,
   backgroundColor,
 }) {
+  const percentage = parseInt(subText.split("%")[0]);
+  if (percentage > 50) {
+    backgroundColor = colors.red;
+  } else if (percentage > 30) {
+    backgroundColor = colors.lightRed2;
+  } else if (percentage > 20) {
+    backgroundColor = colors.lightRed2;
+  } else if (percentage > 10 && percentage < 20) {
+    backgroundColor = colors.lightRed;
+  } else if (percentage < 10) {
+    backgroundColor = colors.green;
+  } else {
+    backgroundColor = colors.lightGray;
+  }
+
   return (
     <TouchableOpacity
       style={[
@@ -20,6 +36,7 @@ export default function ReportCard({
         },
       ]}
       onPress={onPress}
+      activeOpacity={0.4}
     >
       {image && (
         <Image
@@ -32,6 +49,11 @@ export default function ReportCard({
       <AppText variant={variant} style={styles.reportTitle}>
         {children}
       </AppText>
+      {subText && (
+        <AppText variant="Light" style={styles.reportSubTitle}>
+          {subText}
+        </AppText>
+      )}
     </TouchableOpacity>
   );
 }
@@ -55,5 +77,9 @@ const styles = StyleSheet.create({
   reportTitle: {
     marginTop: height(1.2),
     fontSize: totalSize(2),
+  },
+  reportSubTitle: {
+    marginTop: height(0.5),
+    fontSize: totalSize(1.5),
   },
 });

@@ -51,7 +51,7 @@ export default function ReportScreen() {
     },
   ]);
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <AppText variant="Bold" style={styles.screenHeaderTitle}>
         Your Reports
       </AppText>

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 import { width, height, totalSize } from "react-native-dimension";
-import colors from "../../config/colors";
 
+import colors from "../../config/colors";
 import AppText from "../components/AppText";
 import PatientCard from "../components/PatientCard";
 

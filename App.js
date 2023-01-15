@@ -3,10 +3,11 @@ import { useFonts } from "expo-font";
 
 import AuthStack from "./src/navigation/AuthScreen";
 import AuthNavigator from "./src/navigation/AuthNavigation";
-import ReportScreen from "./src/screens/ReportScreen";
 
+import ReportScreen from "./src/screens/ReportScreen";
 import SequenceScreen from "./src/screens/SequenceScreen";
 import ListPatientScreen from "./src/screens/ListPatientScreen";
+import CheckupScreen from "./src/screens/CheckupScreen";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -27,7 +28,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       {/* <AuthStack /> */}
-      <ListPatientScreen />
+      <CheckupScreen />
       {/* <AuthNavigator /> */}
     </View>
   );

@@ -1,11 +1,18 @@
 import { useState } from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { width, height, totalSize } from "react-native-dimension";
 
 import colors from "../../config/colors";
 import AppText from "../components/AppText";
 import AppInput from "../components/AppInput";
 import HospitalCard from "../components/HospitalCard";
+import MedicationCard from "../components/MedicationCard";
 
 export default function CheckupScreen() {
   const [hospitals, setHospitals] = useState([
@@ -28,6 +35,30 @@ export default function CheckupScreen() {
         "https://images.pexels.com/photos/2269294/pexels-photo-2269294.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     },
   ]);
+  const [medications, setMedications] = useState([
+    {
+      title: "Paracetamol",
+      dosage: "500mg",
+      subtitle: "Take 1 tablet every 4 hours",
+      image:
+        "https://integratedlaboratories.in/wp-content/uploads/2022/08/Paracetamol-500mg-Tablets-Intemol-500-2.jpeg",
+    },
+    {
+      title: "Amoxicillin",
+      dosage: "750mg",
+      subtitle: "Take 1 tablet every 8 hours",
+      image:
+        "https://pokupharmagh.com/wp-content/uploads/2017/07/AmoxicillinCapsules.png",
+    },
+    {
+      title: "Ibuprofen",
+      dosage: "400mg",
+      subtitle: "Take 1 tablet every 8 hours",
+      image:
+        "https://images.theconversation.com/files/321639/original/file-20200319-22610-18gca3.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop",
+    },
+  ]);
+
   return (
     <ScrollView style={styles.container}>
       <AppText variant="Bold" style={styles.screenHeaderTitle}>
@@ -56,6 +87,18 @@ export default function CheckupScreen() {
       <AppText variant="Bold" style={styles.screenHeaderTitle}>
         Medications
       </AppText>
+
+      <View style={styles.medicationsContainer}>
+        {medications.map((medication) => (
+          <MedicationCard
+            key={medication.title}
+            title={medication.title}
+            dosage={medication.dosage}
+            subtitle={medication.subtitle}
+            image={medication.image}
+          />
+        ))}
+      </View>
     </ScrollView>
   );
 }
@@ -75,5 +118,9 @@ const styles = StyleSheet.create({
   },
   hospitalContainer: {
     marginTop: height(1),
+  },
+  medicationsContainer: {
+    marginTop: height(1),
+    paddingBottom: height(5),
   },
 });

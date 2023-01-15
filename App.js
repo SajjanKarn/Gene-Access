@@ -6,6 +6,7 @@ import AuthNavigator from "./src/navigation/AuthNavigation";
 import ReportScreen from "./src/screens/ReportScreen";
 
 import SequenceScreen from "./src/screens/SequenceScreen";
+import ListPatientScreen from "./src/screens/ListPatientScreen";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -26,7 +27,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       {/* <AuthStack /> */}
-      <SequenceScreen />
+      <ListPatientScreen />
       {/* <AuthNavigator /> */}
     </View>
   );

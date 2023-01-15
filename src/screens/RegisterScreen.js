@@ -67,8 +67,16 @@ export default function RegisterScreen() {
 
         <AppInput placeholder="John Doe" />
         <AppInput placeholder="Email" />
-        <AppInput placeholder="Password" />
-        <AppInput placeholder="Confirm Password" />
+        <AppInput
+          placeholder="Password"
+          secureTextEntry={true}
+          autoCapitalize="none"
+        />
+        <AppInput
+          placeholder="Confirm Password"
+          secureTextEntry={true}
+          autoCapitalize="none"
+        />
 
         <Button
           font="Poppins-SemiBold"

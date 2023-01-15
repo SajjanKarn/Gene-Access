@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { StyleSheet, View, Image, ScrollView } from "react-native";
+import { StyleSheet, View, ScrollView } from "react-native";
 import { width, height, totalSize } from "react-native-dimension";
 
 import colors from "../../config/colors";
 import AppText from "../components/AppText";
+import Button from "../components/Button";
 import ReportCard from "../components/ReportCard";
 
 export default function ReportScreen() {
@@ -63,6 +64,12 @@ export default function ReportScreen() {
           </ReportCard>
         ))}
       </View>
+
+      <Button backgroundColor={colors.black} textColor={colors.white}>
+        Share Report
+      </Button>
+
+      <View style={{ paddingBottom: height(3) }} />
     </ScrollView>
   );
 }

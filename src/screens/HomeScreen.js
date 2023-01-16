@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
-import { BarChart, LineChart } from "react-native-chart-kit";
 import { width, height, totalSize } from "react-native-dimension";
 import { AntDesign } from "@expo/vector-icons";
+
+import { BarChart, LineChart } from "react-native-chart-kit";
 
 import colors from "../../config/colors";
 import AppText from "../components/AppText";
@@ -18,6 +19,7 @@ export default function HomeScreen() {
       },
     ],
   };
+
   const graphStyle = {
     marginVertical: height(1),
     borderRadius: width(2),

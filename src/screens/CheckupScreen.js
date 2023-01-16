@@ -1,11 +1,5 @@
 import { useState } from "react";
-import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import { width, height, totalSize } from "react-native-dimension";
 
 import colors from "../../config/colors";

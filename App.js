@@ -8,6 +8,7 @@ import ReportScreen from "./src/screens/ReportScreen";
 import SequenceScreen from "./src/screens/SequenceScreen";
 import ListPatientScreen from "./src/screens/ListPatientScreen";
 import CheckupScreen from "./src/screens/CheckupScreen";
+import HomeScreen from "./src/screens/HomeScreen";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -28,7 +29,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       {/* <AuthStack /> */}
-      <CheckupScreen />
+      <HomeScreen />
       {/* <AuthNavigator /> */}
     </View>
   );

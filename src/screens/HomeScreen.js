@@ -1,21 +1,33 @@
 import { useState } from "react";
 import { ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
 import { width, height, totalSize } from "react-native-dimension";
+import { Picker } from "@react-native-picker/picker";
 import { AntDesign } from "@expo/vector-icons";
 
-import { BarChart, LineChart } from "react-native-chart-kit";
+import { BarChart, LineChart, PieChart } from "react-native-chart-kit";
 
 import colors from "../../config/colors";
-import AppText from "../components/AppText";
 import { chartConfig } from "../../config/chartConfig";
+
+import AppText from "../components/AppText";
+import HospitalCard from "../components/HospitalCard";
 
 export default function HomeScreen() {
   const [toggleChart, setToggleChart] = useState(true);
+  const [pickerInput, setPickerInput] = useState(6);
   const data = {
     labels: ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"],
     datasets: [
       {
         data: [20, 45, 28, 80, 99, 43, 20],
+      },
+    ],
+  };
+  const reportData = {
+    labels: ["Heart", "Blood", "Blood", "Temp", "Oxy", "Weig"],
+    datasets: [
+      {
+        data: [99, 135, 70, 98.6, 98, 85],
       },
     ],
   };
@@ -27,7 +39,7 @@ export default function HomeScreen() {
   };
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <AppText variant="Bold" style={styles.screenHeaderTitle}>
         Last Week Summary
       </AppText>
@@ -44,7 +56,7 @@ export default function HomeScreen() {
         {toggleChart ? (
           <LineChart
             data={data}
-            width={width(94)} // from react-native
+            width={width(94)}
             height={height(32)}
             yAxisSuffix="$"
             yAxisInterval={1} // optional, defaults to 1
@@ -59,7 +71,7 @@ export default function HomeScreen() {
             width={width(94)}
             height={height(32)}
             yAxisSuffix="$"
-            chartConfig={chartConfig("#00b09b", "#96c93d", "#10D471")}
+            chartConfig={chartConfig("#2D033B", "#810CA8", "#E5B8F4")}
           />
         )}
       </View>
@@ -68,6 +80,55 @@ export default function HomeScreen() {
         <AppText variant="Bold" style={styles.screenHeaderTitle}>
           Reports
         </AppText>
+
+        <View style={styles.chartContainer}>
+          <View style={styles.chartAction}>
+            <View>
+              <AppText variant="Regular" style={styles.chartActionText}>
+                Recent Reports
+              </AppText>
+              <AppText variant="Light" style={styles.timeIntervalText}>
+                July 2020 - July 2022
+              </AppText>
+            </View>
+            <View>
+              <Picker
+                selectedValue={pickerInput}
+                onValueChange={(itemValue, itemIndex) =>
+                  setPickerInput(itemValue)
+                }
+                style={styles.picker}
+              >
+                <Picker.Item label="6 Months" value={6} />
+                <Picker.Item label="12 Months" value={12} />
+              </Picker>
+            </View>
+          </View>
+
+          <LineChart
+            data={reportData}
+            width={width(94)}
+            height={height(32)}
+            yAxisInterval={1} // optional, defaults to 1
+            chartConfig={chartConfig("#0F2027", "#203A43", "#2C5364", "#fff")}
+            style={graphStyle}
+          />
+        </View>
+      </View>
+
+      <View style={styles.lastCheckupContainer}>
+        <AppText variant="Bold" style={styles.screenHeaderTitle}>
+          Last Checkups
+        </AppText>
+
+        <View style={styles.chartContainer}>
+          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+            <HospitalCard />
+            <HospitalCard />
+            <HospitalCard />
+            <HospitalCard />
+          </ScrollView>
+        </View>
       </View>
     </ScrollView>
   );
@@ -82,7 +143,7 @@ const styles = StyleSheet.create({
   },
   screenHeaderTitle: {
     fontSize: totalSize(2.5),
-    marginBottom: height(0.5),
+    marginVertical: height(1),
   },
   toggleButton: {
     justifyContent: "center",
@@ -95,6 +156,31 @@ const styles = StyleSheet.create({
   },
   chartContainer: {
     justifyContent: "center",
+  },
+  chartAction: {
+    flexDirection: "row",
+    justifyContent: "space-between",
     alignItems: "center",
+    marginBottom: height(1),
+  },
+  chartActionText: {
+    fontSize: totalSize(1.8),
+  },
+  timeIntervalText: {
+    fontSize: totalSize(1.3),
+    color: colors.darkGray,
+  },
+  picker: {
+    width: width(35),
+    height: height(5),
+    backgroundColor: colors.lightGray,
+    borderRadius: width(2),
+  },
+  reportsContainer: {
+    marginTop: height(2),
+  },
+  lastCheckupContainer: {
+    marginTop: height(2),
+    paddingBottom: height(2),
   },
 });

@@ -11,6 +11,7 @@ import ReportScreen from "../screens/ReportScreen";
 import SequenceScreen from "../screens/SequenceScreen";
 
 import TabButton from "../components/TabButton";
+import { StyleSheet } from "react-native";
 
 const Tab = createBottomTabNavigator();
 
@@ -22,26 +23,10 @@ const AuthNavigator = () => {
         screenOptions={{
           headerShown: false,
           tabBarShowLabel: false,
-          tabBarStyle: {
-            position: "absolute",
-            bottom: height(2.2),
-            left: width(5),
-            right: width(5),
-            backgroundColor: colors.white,
-            borderRadius: totalSize(1),
-            height: height(8),
-            shadowColor: colors.black,
-            shadowOffset: {
-              width: 0,
-              height: 0,
-            },
-            shadowOpacity: 0.2,
-            shadowRadius: 1.41,
-            elevation: 1.5,
-          },
           tabBarActiveTintColor: colors.black,
           tabBarInactiveTintColor: colors.darkGray,
           tabBarHideOnKeyboard: true,
+          tabBarStyle: styles.tabBarStyle,
         }}
       >
         <Tab.Screen
@@ -89,11 +74,38 @@ const AuthNavigator = () => {
             tabBarIcon: ({ color, size }) => (
               <AntDesign name="setting" color={color} size={size} />
             ),
+            tabBarBadge: 2,
+            tabBarBadgeStyle: styles.tabBadge,
           }}
         />
       </Tab.Navigator>
     </NavigationContainer>
   );
 };
+
+const styles = StyleSheet.create({
+  tabBarStyle: {
+    position: "absolute",
+    bottom: height(2.2),
+    left: width(5),
+    right: width(5),
+    backgroundColor: colors.white,
+    borderRadius: totalSize(1),
+    height: height(8),
+    shadowColor: colors.black,
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
+    elevation: 1.5,
+  },
+  tabBadge: {
+    fontSize: totalSize(1.5),
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});
 
 export default AuthNavigator;

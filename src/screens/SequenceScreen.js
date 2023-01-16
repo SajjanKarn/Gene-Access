@@ -7,6 +7,7 @@ import AppText from "../components/AppText";
 import Button from "../components/Button";
 import ReportCard from "../components/ReportCard";
 import ScaleItem from "../components/ScaleItem";
+import Spacer from "../components/Spacer";
 
 export default function SequenceScreen() {
   const [threats, setThreats] = useState([
@@ -99,6 +100,8 @@ export default function SequenceScreen() {
             ))}
         </View>
       </View>
+
+      <Spacer size={10} />
     </ScrollView>
   );
 }

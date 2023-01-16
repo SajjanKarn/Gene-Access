@@ -11,6 +11,7 @@ import { chartConfig } from "../../config/chartConfig";
 
 import AppText from "../components/AppText";
 import HospitalCard from "../components/HospitalCard";
+import Spacer from "../components/Spacer";
 
 export default function HomeScreen() {
   const [toggleChart, setToggleChart] = useState(true);
@@ -130,6 +131,8 @@ export default function HomeScreen() {
           </ScrollView>
         </View>
       </View>
+
+      <Spacer />
     </ScrollView>
   );
 }

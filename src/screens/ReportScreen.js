@@ -6,6 +6,7 @@ import colors from "../../config/colors";
 import AppText from "../components/AppText";
 import Button from "../components/Button";
 import ReportCard from "../components/ReportCard";
+import Spacer from "../components/Spacer";
 
 export default function ReportScreen() {
   const [reports, setReports] = useState([
@@ -63,13 +64,13 @@ export default function ReportScreen() {
             {report.title}
           </ReportCard>
         ))}
+
+        <Button backgroundColor={colors.black} textColor={colors.white}>
+          Share Report
+        </Button>
       </View>
 
-      <Button backgroundColor={colors.black} textColor={colors.white}>
-        Share Report
-      </Button>
-
-      <View style={{ paddingBottom: height(3) }} />
+      <Spacer size={14} />
     </ScrollView>
   );
 }

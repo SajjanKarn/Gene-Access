@@ -7,6 +7,7 @@ import AppText from "../components/AppText";
 import AppInput from "../components/AppInput";
 import HospitalCard from "../components/HospitalCard";
 import MedicationCard from "../components/MedicationCard";
+import Spacer from "../components/Spacer";
 
 export default function CheckupScreen() {
   const [hospitals, setHospitals] = useState([
@@ -93,6 +94,8 @@ export default function CheckupScreen() {
           />
         ))}
       </View>
+
+      <Spacer size={9} />
     </ScrollView>
   );
 }

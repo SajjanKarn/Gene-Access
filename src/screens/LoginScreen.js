@@ -7,9 +7,12 @@ import colors from "../../config/colors";
 import AppText from "../components/AppText";
 import AppInput from "../components/AppInput";
 import Button from "../components/Button";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function LoginScreen() {
   const navigation = useNavigation();
+  const { login } = useContext(AuthContext);
 
   return (
     <ScrollView style={styles.container}>
@@ -34,6 +37,7 @@ export default function LoginScreen() {
           activeOpacity={0.8}
           backgroundColor={colors.black}
           textColor={colors.white}
+          onPress={() => login()}
         >
           Login
         </Button>

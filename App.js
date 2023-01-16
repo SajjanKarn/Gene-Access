@@ -1,14 +1,8 @@
 import { StatusBar, StyleSheet, View } from "react-native";
 import { useFonts } from "expo-font";
 
-import AuthStack from "./src/navigation/AuthScreen";
-import AuthNavigator from "./src/navigation/AuthNavigation";
-
-import ReportScreen from "./src/screens/ReportScreen";
-import SequenceScreen from "./src/screens/SequenceScreen";
-import ListPatientScreen from "./src/screens/ListPatientScreen";
-import CheckupScreen from "./src/screens/CheckupScreen";
-import HomeScreen from "./src/screens/HomeScreen";
+import AuthContextProvider from "./context/AuthContext";
+import AuthRender from "./src/navigation/AuthRender";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -28,7 +22,9 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <AuthNavigator />
+      <AuthContextProvider>
+        <AuthRender />
+      </AuthContextProvider>
     </View>
   );
 }

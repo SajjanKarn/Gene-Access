@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
   Image,
   ScrollView,
@@ -16,9 +16,11 @@ import colors from "../../config/colors";
 import AppText from "../components/AppText";
 import Button from "../components/Button";
 import AppInput from "../components/AppInput";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function RegisterScreen() {
   const navigation = useNavigation();
+  const { login } = useContext(AuthContext);
   const [image, setImage] = useState(null);
 
   const pickImage = async () => {
@@ -83,6 +85,7 @@ export default function RegisterScreen() {
           activeOpacity={0.8}
           backgroundColor={colors.black}
           textColor={colors.white}
+          onPress={() => login()}
         >
           Register
         </Button>

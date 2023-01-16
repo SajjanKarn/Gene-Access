@@ -1,12 +1,16 @@
+import { useContext } from "react";
 import { Image, ScrollView, StyleSheet, View } from "react-native";
 import { width, height, totalSize } from "react-native-dimension";
 
 import colors from "../../config/colors";
+import { AuthContext } from "../../context/AuthContext";
 
 import AppText from "../components/AppText";
 import Setting from "../components/Setting";
 
 export default function ProfileScreen() {
+  const { logout } = useContext(AuthContext);
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.userProfileContainer}>
@@ -31,7 +35,9 @@ export default function ProfileScreen() {
         <Setting iconName="lock">Change Password</Setting>
         <Setting iconName="creditcard">Payment</Setting>
         <Setting iconName="staro">Rate Us</Setting>
-        <Setting iconName="logout">Logout</Setting>
+        <Setting iconName="logout" onPress={() => logout()}>
+          Logout
+        </Setting>
       </View>
     </ScrollView>
   );

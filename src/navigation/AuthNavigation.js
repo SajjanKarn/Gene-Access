@@ -1,3 +1,4 @@
+import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { AntDesign } from "@expo/vector-icons";
@@ -11,7 +12,6 @@ import ReportScreen from "../screens/ReportScreen";
 import SequenceScreen from "../screens/SequenceScreen";
 
 import TabButton from "../components/TabButton";
-import { StyleSheet } from "react-native";
 
 const Tab = createBottomTabNavigator();
 

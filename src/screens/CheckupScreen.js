@@ -54,7 +54,7 @@ export default function CheckupScreen() {
   ]);
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <AppText variant="Bold" style={styles.screenHeaderTitle}>
         Recent Checkups
       </AppText>

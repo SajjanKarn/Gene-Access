@@ -1,12 +1,15 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { AntDesign } from "@expo/vector-icons";
+import { width, height, totalSize } from "react-native-dimension";
 import colors from "../../config/colors";
 
-import LandingScreen from "../screens/LandingScreen";
-import LoginScreen from "../screens/LoginScreen";
-import RegisterScreen from "../screens/RegisterScreen";
-import ForgotPasswordScreen from "../screens/ForgotPasswordScreen";
+import HomeScreen from "../screens/HomeScreen";
+import ProfileScreen from "../screens/ProfileScreen";
+import CheckupScreen from "../screens/CheckupScreen";
+import ReportScreen from "../screens/ReportScreen";
+import SequenceScreen from "../screens/SequenceScreen";
+
 import TabButton from "../components/TabButton";
 
 const Tab = createBottomTabNavigator();
@@ -15,52 +18,53 @@ const AuthNavigator = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator
-        initialRouteName="Landing"
+        initialRouteName="HomeScreen"
         screenOptions={{
           headerShown: false,
           tabBarShowLabel: false,
           tabBarStyle: {
             position: "absolute",
-            bottom: 25,
-            left: 20,
-            right: 20,
+            bottom: height(2.2),
+            left: width(5),
+            right: width(5),
             backgroundColor: colors.white,
-            borderRadius: 10,
-            height: 60,
+            borderRadius: totalSize(1),
+            height: height(8),
             shadowColor: colors.black,
             shadowOffset: {
               width: 0,
-              height: 1,
+              height: 0,
             },
             shadowOpacity: 0.2,
             shadowRadius: 1.41,
-            elevation: 2,
+            elevation: 1.5,
           },
           tabBarActiveTintColor: colors.black,
           tabBarInactiveTintColor: colors.darkGray,
+          tabBarHideOnKeyboard: true,
         }}
       >
         <Tab.Screen
-          name="Landing"
-          component={LandingScreen}
+          name="CheckupScreen"
+          component={CheckupScreen}
           options={{
             tabBarIcon: ({ color, size }) => (
-              <AntDesign name="home" color={color} size={size} />
+              <AntDesign name="clockcircleo" color={color} size={size} />
             ),
           }}
         />
         <Tab.Screen
-          name="Login"
-          component={LoginScreen}
+          name="ReportScreen"
+          component={ReportScreen}
           options={{
             tabBarIcon: ({ color, size }) => (
-              <AntDesign name="login" color={color} size={size} />
+              <AntDesign name="barschart" color={color} size={size} />
             ),
           }}
         />
         <Tab.Screen
-          name="Home"
-          component={LandingScreen}
+          name="HomeScreen"
+          component={HomeScreen}
           options={{
             tabBarIcon: ({ color, size }) => (
               <AntDesign name="home" color={color} size={size} />
@@ -69,21 +73,21 @@ const AuthNavigator = () => {
           }}
         />
         <Tab.Screen
-          name="Register"
-          component={RegisterScreen}
+          name="SequenceScreen"
+          component={SequenceScreen}
           options={{
             tabBarIcon: ({ color, size }) => (
-              <AntDesign name="user" color={color} size={size} />
+              <AntDesign name="bars" color={color} size={size} />
             ),
           }}
         />
 
         <Tab.Screen
-          name="ForgotPassword"
-          component={ForgotPasswordScreen}
+          name="UserSettings"
+          component={ProfileScreen}
           options={{
             tabBarIcon: ({ color, size }) => (
-              <AntDesign name="questioncircleo" color={color} size={size} />
+              <AntDesign name="setting" color={color} size={size} />
             ),
           }}
         />

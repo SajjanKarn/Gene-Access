@@ -28,9 +28,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      {/* <AuthStack /> */}
-      <HomeScreen />
-      {/* <AuthNavigator /> */}
+      <AuthNavigator />
     </View>
   );
 }

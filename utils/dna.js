@@ -1,5 +1,4 @@
 // convert a DNA Sequence to binary
-
 const dnaToBinary = (dna) => {
   const dnaToBinaryMap = {
     A: "00",

@@ -53,7 +53,7 @@ export default function SequenceScreen() {
   ]);
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <AppText variant="Bold" style={styles.screenHeaderTitle}>
         DNA Sequence
       </AppText>

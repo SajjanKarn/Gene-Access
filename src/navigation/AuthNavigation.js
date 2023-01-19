@@ -1,6 +1,7 @@
 import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { AntDesign } from "@expo/vector-icons";
 import { width, height, totalSize } from "react-native-dimension";
 import colors from "../../config/colors";
@@ -10,10 +11,32 @@ import ProfileScreen from "../screens/ProfileScreen";
 import CheckupScreen from "../screens/CheckupScreen";
 import ReportScreen from "../screens/ReportScreen";
 import SequenceScreen from "../screens/SequenceScreen";
+import BinaryScreen from "../screens/BinaryScreen";
 
 import TabButton from "../components/TabButton";
 
 const Tab = createBottomTabNavigator();
+
+const SequenceScreenStack = createNativeStackNavigator();
+
+const SequenceScreenStackScreen = () => {
+  return (
+    <SequenceScreenStack.Navigator initialRouteName="InitialSequenceScreen">
+      <SequenceScreenStack.Screen
+        name="InitialSequenceScreen"
+        component={SequenceScreen}
+        options={{ headerShown: false }}
+      />
+      <SequenceScreenStack.Screen
+        name="BinaryScreen"
+        component={BinaryScreen}
+        options={{
+          headerTitle: "Convert to Binary",
+        }}
+      />
+    </SequenceScreenStack.Navigator>
+  );
+};
 
 const AuthNavigator = () => {
   return (
@@ -59,7 +82,7 @@ const AuthNavigator = () => {
         />
         <Tab.Screen
           name="SequenceScreen"
-          component={SequenceScreen}
+          component={SequenceScreenStackScreen}
           options={{
             tabBarIcon: ({ color, size }) => (
               <AntDesign name="bars" color={color} size={size} />

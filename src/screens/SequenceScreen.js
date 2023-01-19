@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { width, height, totalSize } from "react-native-dimension";
@@ -10,6 +11,7 @@ import ScaleItem from "../components/ScaleItem";
 import Spacer from "../components/Spacer";
 
 export default function SequenceScreen() {
+  const navigation = useNavigation();
   const [threats, setThreats] = useState([
     {
       name: "Diabetes",
@@ -60,13 +62,24 @@ export default function SequenceScreen() {
       </AppText>
 
       <View style={styles.reportContainer}>
-        <Button
-          backgroundColor={colors.black}
-          textColor={colors.white}
-          activeOpacity={0.5}
-        >
-          My DNA File
-        </Button>
+        <View style={styles.buttonContainer}>
+          <Button
+            backgroundColor={colors.black}
+            textColor={colors.white}
+            activeOpacity={0.5}
+          >
+            My DNA File
+          </Button>
+
+          <Button
+            backgroundColor={colors.black}
+            textColor={colors.white}
+            activeOpacity={0.5}
+            onPress={() => navigation.navigate("BinaryScreen")}
+          >
+            Convert DNA Sequence
+          </Button>
+        </View>
 
         <View style={styles.scaleContainer}>
           <AppText variant="Bold" style={styles.scaleTitle}>

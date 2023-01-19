@@ -7,12 +7,13 @@ import { AuthContext } from "../../context/AuthContext";
 
 import AppText from "../components/AppText";
 import Setting from "../components/Setting";
+import Spacer from "../components/Spacer";
 
 export default function ProfileScreen() {
   const { logout } = useContext(AuthContext);
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <View style={styles.userProfileContainer}>
         <Image
           source={{
@@ -22,6 +23,9 @@ export default function ProfileScreen() {
         />
         <AppText variant="SemiBold" style={styles.userProfileName}>
           Billy Butcher
+        </AppText>
+        <AppText variant="Light" style={styles.userEmail}>
+          billybutcher@gmail.com
         </AppText>
       </View>
 
@@ -39,6 +43,8 @@ export default function ProfileScreen() {
           Logout
         </Setting>
       </View>
+
+      <Spacer />
     </ScrollView>
   );
 }
@@ -61,6 +67,10 @@ const styles = StyleSheet.create({
   userProfileName: {
     fontSize: totalSize(2.5),
     marginTop: height(1),
+  },
+  userEmail: {
+    fontSize: totalSize(1.8),
+    color: colors.darkGray,
   },
   settingHeaderTitle: {
     fontSize: totalSize(2.5),

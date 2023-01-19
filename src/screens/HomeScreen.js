@@ -1,5 +1,11 @@
 import { useState } from "react";
-import { ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { width, height, totalSize } from "react-native-dimension";
 import { Picker } from "@react-native-picker/picker";
 import { AntDesign } from "@expo/vector-icons";
@@ -16,6 +22,36 @@ import Spacer from "../components/Spacer";
 export default function HomeScreen() {
   const [toggleChart, setToggleChart] = useState(true);
   const [pickerInput, setPickerInput] = useState(6);
+  const [hospitals, setHospitals] = useState([
+    {
+      id: 1,
+      name: "St. Joseph's Hospital",
+      address: "1234 Main St, Los Angeles, CA 90001",
+      image:
+        "https://images.pexels.com/photos/3957987/pexels-photo-3957987.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    },
+    {
+      id: 2,
+      name: "UCLA Medical Center",
+      address: "1234 Main St, Los Angeles, CA 90001",
+      image:
+        "https://images.pexels.com/photos/356040/pexels-photo-356040.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    },
+    {
+      id: 3,
+      name: "Northwestern Memorial Hospital",
+      address: "Boston St, Los Angeles, CA 90001",
+      image:
+        "https://images.pexels.com/photos/3279203/pexels-photo-3279203.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    },
+    {
+      id: 4,
+      name: "Cedars-Sinai Medical Center",
+      address: "1234 Main St, Los Angeles, CA 90001",
+      image:
+        "https://images.pexels.com/photos/3845806/pexels-photo-3845806.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    },
+  ]);
   const data = {
     labels: ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"],
     datasets: [
@@ -41,6 +77,25 @@ export default function HomeScreen() {
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+      <View style={styles.userGreetingContainer}>
+        <View style={styles.userGreetingTextContainer}>
+          <AppText variant="Bold" style={styles.userHelloText}>
+            Hello, Billy 👋
+          </AppText>
+          <AppText variant="Regular" style={styles.screenHeaderSubtitle}>
+            How are you feeling today?
+          </AppText>
+        </View>
+
+        <View style={styles.userProfileImageContainer}>
+          <Image
+            source={{
+              uri: "https://cdn.mos.cms.futurecdn.net/uNarNjeX5KZfbX3YVN6Nb9-1200-80.jpg",
+            }}
+            style={styles.userProfileImage}
+          />
+        </View>
+      </View>
       <AppText variant="Bold" style={styles.screenHeaderTitle}>
         Last Week Summary
       </AppText>
@@ -124,10 +179,14 @@ export default function HomeScreen() {
 
         <View style={styles.chartContainer}>
           <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-            <HospitalCard />
-            <HospitalCard />
-            <HospitalCard />
-            <HospitalCard />
+            {hospitals.map((hospital) => (
+              <HospitalCard
+                key={hospital.id}
+                image={hospital.image}
+                name={hospital.name}
+                address={hospital.address}
+              />
+            ))}
           </ScrollView>
         </View>
       </View>
@@ -143,6 +202,30 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     paddingHorizontal: width(3),
     paddingVertical: height(1),
+  },
+  userGreetingContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: height(1),
+    paddingVertical: height(1.5),
+  },
+  userHelloText: {
+    fontSize: totalSize(2.5),
+  },
+  screenHeaderSubtitle: {
+    fontSize: totalSize(1.8),
+    color: colors.darkGray,
+  },
+  userProfileImageContainer: {
+    width: totalSize(6),
+    height: totalSize(6),
+    borderRadius: totalSize(3),
+    overflow: "hidden",
+  },
+  userProfileImage: {
+    width: "100%",
+    height: "100%",
   },
   screenHeaderTitle: {
     fontSize: totalSize(2.5),

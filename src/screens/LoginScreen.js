@@ -23,7 +23,11 @@ export default function LoginScreen() {
       {/* Form  */}
       <View style={styles.formContainer}>
         <AppInput placeholder="Email" />
-        <AppInput placeholder="Password" />
+        <AppInput
+          placeholder="Password"
+          secureTextEntry={true}
+          autoCapitalize="none"
+        />
 
         <AppText
           style={styles.forgotPassword}

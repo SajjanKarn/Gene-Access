@@ -68,7 +68,11 @@ export default function CheckupScreen() {
         Recently Visited
       </AppText>
 
-      <ScrollView style={styles.hospitalContainer} horizontal>
+      <ScrollView
+        style={styles.hospitalContainer}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+      >
         {hospitals.map((hospital) => (
           <HospitalCard
             key={hospital.name}

@@ -84,9 +84,11 @@ const styles = StyleSheet.create({
   reportTitle: {
     marginTop: height(1.2),
     fontSize: totalSize(2),
+    textAlign: "center",
   },
   reportSubTitle: {
     marginTop: height(0.5),
     fontSize: totalSize(1.5),
+    textAlign: "center",
   },
 });

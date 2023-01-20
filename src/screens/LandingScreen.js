@@ -6,45 +6,42 @@ import { width, height, totalSize } from "react-native-dimension";
 import colors from "../../config/colors";
 import AppText from "../components/AppText";
 import Button from "../components/Button";
+import Spacer from "../components/Spacer";
 
 export default function LandingScreen() {
   const navigation = useNavigation();
 
   return (
     <>
+      <Image
+        source={{
+          uri: "https://images.pexels.com/photos/1431283/pexels-photo-1431283.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        }}
+        style={styles.screenBackgroundImage}
+      />
+      <View style={styles.blurOverlay} />
+
       <View style={styles.container}>
-        <AppText variant="SemiBold" style={styles.headerText}>
-          Welcome To Gene-Acess
-        </AppText>
-        <AppText variant="Light" style={styles.subHeader}>
-          Your Medical Records At Your Fingertips
-        </AppText>
+        <View style={styles.contentContainer}>
+          <AppText variant="Bold" style={styles.title}>
+            Welcome to GenoSys
+          </AppText>
+          <View style={styles.footerContainer}>
+            <AppText variant="Light" style={styles.footerText}>
+              A platform to help you understand your genetic data and make
+              informed decisions about your health.
+            </AppText>
+          </View>
+          <Button
+            backgroundColor={colors.lightRed2}
+            textColor={colors.white}
+            onPress={() => navigation.navigate("Login")}
+          >
+            Get Started
+          </Button>
 
-        <Image
-          source={{
-            uri: "https://images-platform.99static.com//IgtttscKg4mbdokiS2uFxZmEhVI=/310x284:1006x980/fit-in/590x590/projects-files/37/3792/379277/5f1fa1e1-087f-4f3f-9c35-afc000710eb9.jpg",
-          }}
-          style={styles.headerImage}
-        />
-
-        <Button
-          font="Poppins-SemiBold"
-          backgroundColor={colors.white}
-          textColor={colors.black}
-          activeOpacity={0.8}
-          onPress={() => navigation.navigate("Login")}
-        >
-          Login
-        </Button>
-        <Button
-          font="Poppins-SemiBold"
-          backgroundColor={`#404040`}
-          textColor={colors.white}
-          activeOpacity={0.8}
-          onPress={() => navigation.navigate("Register")}
-        >
-          Register
-        </Button>
+          <Spacer size={height(2)} />
+        </View>
       </View>
     </>
   );
@@ -53,27 +50,38 @@ export default function LandingScreen() {
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: width(5),
-    backgroundColor: colors.black,
     flex: 1,
     justifyContent: "center",
   },
-  headerText: {
-    fontSize: totalSize(3),
-    textAlign: "center",
-    marginTop: height(5),
-    color: colors.white,
+  screenBackgroundImage: {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+    resizeMode: "cover",
   },
-  subHeader: {
-    fontSize: totalSize(1.5),
-    textAlign: "center",
-    color: colors.white,
+  blurOverlay: {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+    backgroundColor: colors.black,
+    opacity: 0.75,
   },
-
-  headerImage: {
-    width: totalSize(13),
-    height: totalSize(13),
-    borderRadius: totalSize(13) / 2,
-    alignSelf: "center",
-    marginVertical: height(5),
+  contentContainer: {
+    flex: 1,
+    justifyContent: "flex-end",
+    alignItems: "center",
+  },
+  title: {
+    fontSize: totalSize(3.8),
+    color: colors.white,
+    textAlign: "center",
+  },
+  footerContainer: {
+    marginVertical: height(2),
+  },
+  footerText: {
+    fontSize: totalSize(1.8),
+    color: colors.white,
+    textAlign: "center",
   },
 });

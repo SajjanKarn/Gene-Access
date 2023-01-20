@@ -32,7 +32,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.sxc.genosys"
     },
     "web": {
       "favicon": "./assets/favicon.png"
